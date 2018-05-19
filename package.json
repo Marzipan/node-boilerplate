@@ -1,0 +1,47 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:changed": "yarn test --onlyChanged --passWithNoTests --silent --runInBand",
+    "test:watch": "yarn test --watch",
+    "test:update": "yarn test --update",
+    "test:coverage": "yarn test --coverage --verbose --silent --runInBand --passWithNoTests",
+    "lint": "eslint . --cache --ignore-pattern '!.eslintrc.js'",
+    "lint:fix": "yarn lint --fix",
+    "lint:staged": "yarn lint:fix --max-warnings=0 --ignore-pattern '!.eslintrc.js'",
+    "precommit": "lint-staged && yarn test:changed",
+    "prepush": "yarn test:coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marzipan/node-boilerplate.git"
+  },
+  "author": "Matt Jones",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marzipan/node-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Marzipan/node-boilerplate#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.8.2",
+    "husky": "^0.14.3",
+    "jest": "^22.4.4",
+    "lint-staged": "^7.1.1",
+    "prettier": "^1.12.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": ["yarn run lint:staged", "git add"],
+    "*.{json,css,scss,less}": ["prettier --write", "git add"],
+    "*.{png,jpeg,jpg,gif,svg}": ["imagemin-lint-staged", "git add"]
+  }
+}
